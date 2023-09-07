@@ -11,7 +11,7 @@ public class MenuManager : MonoBehaviour
     // we assign event onClick on Start button
     public void StartGameButton()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneIndexConstants.Missions_Menu);
     }
 
     public void ExitButton()
@@ -27,6 +27,6 @@ public class MenuManager : MonoBehaviour
 
     public void SettingsButton()
     {
-        // SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneIndexConstants.Settings_Menu);
     }
 }

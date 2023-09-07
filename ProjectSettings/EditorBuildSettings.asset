@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Counter/Scenes/Menu.unity
     guid: 53c998c523fd75b66b25659160ba0c51
   - enabled: 1
-    path: Assets/Counter/Scenes/Scene.unity
+    path: Assets/Counter/Scenes/MissionSelection.unity
+    guid: 7ffe8726b15431a8fbf5c85f52779a69
+  - enabled: 1
+    path: Assets/Counter/Scenes/Settings.unity
+    guid: be959cce7fc820cfe8dfaa45bc6c4750
+  - enabled: 1
+    path: Assets/Counter/Scenes/Mission-1.unity
     guid: c237548c21a57894dae9921c31ea3055
   m_configObjects: {}
