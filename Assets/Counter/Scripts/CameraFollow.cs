@@ -9,35 +9,25 @@ public class FollowPlayerSciprt : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
 
-    [SerializeField] float turnSpeed = 10.0f;
+    [SerializeField] float turnSpeed = 50.0f;
 
-    // private Vector3 offset = new Vector3(0, 20, 0);
+    //how to get child object?
+    public Camera playerCamera;
 
-    // Start is called before the first frame update
-    void Start()
+    void Update()
     {
-        
+        verticalInput = Input.GetAxis("Vertical");
+
+        playerCamera.transform.Rotate(Vector3.left * Time.deltaTime * turnSpeed * verticalInput);
+
+        //TODO Refactor
+        Vector3 playerCameraPosY = playerCamera.transform.position + Vector3.down * 1.0f * Time.deltaTime * verticalInput;       
+        playerCamera.transform.position = new Vector3(transform.position.x, playerCameraPosY.y, playerCamera.transform.position.z);
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void LateUpdate()
     {
-        // horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
-        horizontalInput = Input.GetAxis("Horizontal");
-
-
-        Vector3 rotation = new Vector3(0f, 1.0f * horizontalInput * turnSpeed, 0f);
-        transform.Rotate(rotation * Time.deltaTime);
-
-        
-
-
-        transform.Rotate(Vector3.left * Time.deltaTime * turnSpeed * verticalInput);
+        transform.rotation = player.transform.rotation;
     }
 }
