@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ProjectilePooler : MonoBehaviour
 {
-    public static ProjectilePooler SharedInstance;
+    public static ProjectilePooler SharedInstance { get; private set; }
     [SerializeField] List<GameObject> pooledObjects;
     [SerializeField] GameObject objectToPool;
     [SerializeField] int amountToPool = 50;
