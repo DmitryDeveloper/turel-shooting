@@ -16,15 +16,21 @@ public class PlayerSciprt : MonoBehaviour
     private float horizontalLeftMax = 240.0f;
     private float horizontalRightMax = 320.0f;
 
-    // Start is called before the first frame update
+    private GameManager GameManager;
+
     void Start()
     {
-    
+        //TODO should be singleton?
+        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!GameManager.isGameActive) {
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             // Get an object object from the pool

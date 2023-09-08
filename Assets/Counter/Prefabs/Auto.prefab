@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4845112728047602418}
   - component: {fileID: 7414039205414394751}
   - component: {fileID: 7149743446214164428}
-  - component: {fileID: 9034734468748609211}
+  - component: {fileID: 5817367879740542541}
   m_Layer: 0
   m_Name: Auto
   m_TagString: Enemy
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directionPoint: {fileID: 3067791919755197422, guid: 060c90432ddd5196c81df41b41f322e9, type: 3}
---- !u!114 &9034734468748609211
+--- !u!114 &5817367879740542541
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,6 +157,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5346713620910191864}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 783a2350d08b354bf9d416f1838fad6c, type: 3}
+  m_Script: {fileID: 11500000, guid: c0844769428547dfc882d5324cb21507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

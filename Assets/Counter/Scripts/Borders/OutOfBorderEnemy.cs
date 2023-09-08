@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OutOfBorderPlane : MonoBehaviour
+public class OutOfBorderEnemy : MonoBehaviour
 {
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x > 30) {
+        if (transform.position.x > 40) {
             Destroy(gameObject);
         }
     }

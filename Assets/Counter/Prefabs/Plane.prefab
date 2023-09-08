@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2976775732310065242}
   - component: {fileID: 4845112728047602418}
   - component: {fileID: 7414039205414394751}
-  - component: {fileID: 9034734468748609211}
   - component: {fileID: 1470475838517795816}
+  - component: {fileID: 276687548990827300}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Enemy
@@ -135,18 +135,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &9034734468748609211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5346713620910191864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 783a2350d08b354bf9d416f1838fad6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1470475838517795816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,3 +148,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directionPoint: {fileID: 3067791919755197422, guid: 060c90432ddd5196c81df41b41f322e9, type: 3}
+--- !u!114 &276687548990827300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5346713620910191864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0844769428547dfc882d5324cb21507, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
