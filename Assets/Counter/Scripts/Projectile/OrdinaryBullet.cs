@@ -30,6 +30,6 @@ public class Projectile : BaseProjectile
             gameManager.UpdateCount(1);
         }
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

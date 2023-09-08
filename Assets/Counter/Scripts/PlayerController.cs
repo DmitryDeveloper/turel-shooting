@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerSciprt : MonoBehaviour
 {
-    public GameObject projectilePrefab;
-    public GameObject gunPositionObject;
-    public GameObject firePositionObject;
+    [SerializeField] GameObject projectilePrefab;
+    [SerializeField] GameObject gunPositionObject;
+    [SerializeField] GameObject firePositionObject;
     [SerializeField] float power = 60.0f;
     [SerializeField] float turnSpeed = 50.0f;
 
@@ -28,9 +28,14 @@ public class PlayerSciprt : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            GameObject projectile = Instantiate(projectilePrefab, firePositionObject.transform.position, Quaternion.identity);
-            projectile.GetComponent<Rigidbody>().velocity = gunPositionObject.transform.forward * power;
-            // projectile.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * power);
+            // Get an object object from the pool
+            GameObject pooledProjectile = ProjectilePooler.SharedInstance.GetPooledObject();
+            if (pooledProjectile != null)
+            {
+                pooledProjectile.SetActive(true); // activate it
+                pooledProjectile.transform.position = firePositionObject.transform.position; // position it at player
+                pooledProjectile.GetComponent<Rigidbody>().velocity = gunPositionObject.transform.forward * power;
+            }
         }
 
         horizontalInput = Input.GetAxis("Horizontal");

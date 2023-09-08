@@ -14,7 +14,7 @@ public class OutOfBorderProjectile : MonoBehaviour
     void Update()
     {
         if (transform.position.y < -10) {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
