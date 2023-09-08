@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FollowPlayerSciprt : MonoBehaviour
 {
-    public GameObject player;
+    [SerializeField] GameObject player;
 
     private float horizontalInput;
     private float verticalInput;

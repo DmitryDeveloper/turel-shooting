@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Auto : BaseEnemy
 {
-    public GameObject directionPoint;
+    [SerializeField] GameObject directionPoint;
     private Rigidbody enemyRb;
     private float speed = 1.5f;
+    
     // Start is called before the first frame update
     void Start()
     {

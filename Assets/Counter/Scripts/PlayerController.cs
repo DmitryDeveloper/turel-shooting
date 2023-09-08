@@ -13,7 +13,6 @@ public class PlayerSciprt : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
 
-
     private float horizontalLeftMax = 240.0f;
     private float horizontalRightMax = 320.0f;
 

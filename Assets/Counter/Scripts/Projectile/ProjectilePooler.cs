@@ -5,9 +5,9 @@ using UnityEngine;
 public class ProjectilePooler : MonoBehaviour
 {
     public static ProjectilePooler SharedInstance;
-    public List<GameObject> pooledObjects;
-    public GameObject objectToPool;
-    public int amountToPool = 50;
+    [SerializeField] List<GameObject> pooledObjects;
+    [SerializeField] GameObject objectToPool;
+    [SerializeField] int amountToPool = 50;
 
     void Awake()
     {

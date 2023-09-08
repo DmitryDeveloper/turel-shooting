@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject[] enemyPrefabs;
+    [SerializeField] GameObject[] enemyPrefabs;
     // public GameObject[] autoPrefabs;
     private float spawnRange = 9;
 

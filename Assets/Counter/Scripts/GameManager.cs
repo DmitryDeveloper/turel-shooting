@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public Text CounterText;
+    [SerializeField] Text CounterText;
 
     private int Count = 0;
 

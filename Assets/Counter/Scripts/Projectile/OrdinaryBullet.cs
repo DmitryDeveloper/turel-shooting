@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : BaseProjectile
 {
-    public float speed = 40.0f;
+    [SerializeField] float speed = 40.0f;
 
     private Rigidbody projectibleRb;
 
@@ -15,12 +15,6 @@ public class Projectile : BaseProjectile
     {
         projectibleRb = GetComponent<Rigidbody>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnCollisionEnter(Collision collision)
