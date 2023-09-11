@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Text CounterText;
     [SerializeField] Text CounterNotDestroyedEnemiesText;
     [SerializeField] GameObject GameOverUIContainer; 
+    [SerializeField] GameObject MissionCompletedUIContainer; 
 
     public bool isGameActive { get; private set; }
     private int Count = 0;
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
         isGameActive = true;
 
         GameOverUIContainer.SetActive(false);
+        MissionCompletedUIContainer.SetActive(false);
     }
 
     public void UpdateCount(int value)
@@ -45,5 +47,28 @@ public class GameManager : MonoBehaviour
     {
         isGameActive = false;
         GameOverUIContainer.SetActive(true);
+    }
+
+    public void LastWaveNotification()
+    {
+        StartCoroutine(CompleteMissionWhenEnemiesAllDestroyed());
+    }
+
+    private IEnumerator CompleteMissionWhenEnemiesAllDestroyed()
+    {
+        //check how much enimies are on board?
+        while (GameObject.FindGameObjectsWithTag("Enemy").Length > 0) // Запускаем бесконечный цикл сопрограммы.
+        {
+            // Ждем 1 секунд.
+            yield return new WaitForSeconds(1f);
+        }
+
+        MissionCompleted();
+    }
+
+    public void MissionCompleted()
+    {
+        isGameActive = false;
+        MissionCompletedUIContainer.SetActive(true);
     }
 }

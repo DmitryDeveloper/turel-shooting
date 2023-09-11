@@ -46,7 +46,6 @@ public class PlayerSciprt : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
 
-        Debug.Log(verticalInput);     
         if (CanRotateGun(verticalInput)) {
             gunPositionObject.transform.Rotate(Vector3.left * Time.deltaTime * turnSpeed * verticalInput);            
         }
@@ -59,7 +58,6 @@ public class PlayerSciprt : MonoBehaviour
     public bool CanRotateGun(float verticalInput)
     {
         float gunRotationVertical = gunPositionObject.transform.rotation.eulerAngles.x;
-        Debug.Log(gunRotationVertical);   
 
         //UP
         if (gunRotationVertical > 300 && gunRotationVertical < 360) {

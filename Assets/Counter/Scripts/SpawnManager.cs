@@ -10,9 +10,16 @@ public class SpawnManager : MonoBehaviour
 
     public int waveNumber = 1;
 
+    [SerializeField] int missionWaveNumber = 5;
+
+    private GameManager GameManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        //TODO should be singleton?
+        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         SpawnEnemyWave(waveNumber);
         StartCoroutine(EnableReadyEvery10Seconds());
     }
@@ -29,7 +36,7 @@ public class SpawnManager : MonoBehaviour
 
     private IEnumerator EnableReadyEvery10Seconds()
     {
-        while (true) // Запускаем бесконечный цикл сопрограммы.
+        while (waveNumber <= missionWaveNumber) // Запускаем бесконечный цикл сопрограммы.
         {
             // Ждем 10 секунд.
             yield return new WaitForSeconds(15f);
@@ -37,6 +44,8 @@ public class SpawnManager : MonoBehaviour
             SpawnEnemyWave(waveNumber);
             Debug.Log("new wave");
         }
+
+        GameManager.LastWaveNotification();
     }
 
     Vector3 GenerateSpawnPosition()
