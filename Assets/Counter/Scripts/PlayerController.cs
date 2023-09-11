@@ -46,7 +46,44 @@ public class PlayerSciprt : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
 
-        gunPositionObject.transform.Rotate(Vector3.left * Time.deltaTime * turnSpeed * verticalInput);
+        Debug.Log(verticalInput);     
+        if (CanRotateGun(verticalInput)) {
+            gunPositionObject.transform.Rotate(Vector3.left * Time.deltaTime * turnSpeed * verticalInput);            
+        }
+        
         transform.Rotate(Vector3.up,  Time.deltaTime * turnSpeed * horizontalInput);
+    }
+
+    // Should rotate between [6 - 0, 360 - 300]
+    // TODO can be replaces with Transform Y of Fire object ?
+    public bool CanRotateGun(float verticalInput)
+    {
+        float gunRotationVertical = gunPositionObject.transform.rotation.eulerAngles.x;
+        Debug.Log(gunRotationVertical);   
+
+        //UP
+        if (gunRotationVertical > 300 && gunRotationVertical < 360) {
+            // up
+            if (verticalInput > 0 && gunRotationVertical > 310) {
+                return true;
+            }
+
+            // down
+            if (verticalInput < 0) {
+                return true;
+            }
+        } else {
+            // up
+            if (verticalInput > 0) {
+                return true;
+            }
+
+            // down
+            if (gunRotationVertical < 6) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

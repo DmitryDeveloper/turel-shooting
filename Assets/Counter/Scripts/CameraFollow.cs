@@ -14,15 +14,24 @@ public class FollowPlayerSciprt : MonoBehaviour
     //how to get child object?
     public Camera playerCamera;
 
+    private PlayerSciprt playerController;
+
+    void Start()
+    {
+        playerController = GameObject.Find("Canon").GetComponent<PlayerSciprt>();
+    }
+
     void Update()
     {
         verticalInput = Input.GetAxis("Vertical");
 
-        playerCamera.transform.Rotate(Vector3.left * Time.deltaTime * turnSpeed * verticalInput);
+        if (playerController.CanRotateGun(verticalInput)) {
+            playerCamera.transform.Rotate(Vector3.left * Time.deltaTime * turnSpeed * verticalInput);
 
-        //TODO Refactor
-        Vector3 playerCameraPosY = playerCamera.transform.position + Vector3.down * 1.0f * Time.deltaTime * verticalInput;       
-        playerCamera.transform.position = new Vector3(transform.position.x, playerCameraPosY.y, playerCamera.transform.position.z);
+            //TODO Refactor
+            Vector3 playerCameraPosY = playerCamera.transform.position + Vector3.down * 1.0f * Time.deltaTime * verticalInput;       
+            playerCamera.transform.position = new Vector3(transform.position.x, playerCameraPosY.y, playerCamera.transform.position.z);
+        }
     }
 
     // Update is called once per frame
