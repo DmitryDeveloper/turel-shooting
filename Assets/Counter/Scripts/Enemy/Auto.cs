@@ -6,7 +6,7 @@ public class Auto : BaseEnemy
 {
     [SerializeField] GameObject directionPoint;
     private Rigidbody enemyRb;
-    private float speed = 1.5f;
+    private float speed = 2.5f;
     
     // Start is called before the first frame update
     void Start()

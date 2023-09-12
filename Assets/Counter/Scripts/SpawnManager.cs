@@ -5,12 +5,13 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField] GameObject[] enemyPrefabs;
-    // public GameObject[] autoPrefabs;
+    [SerializeField] GameObject[] vehicleEnemyPrefabs;
+
     private float spawnRange = 9;
 
     public int waveNumber = 1;
 
-    [SerializeField] int missionWaveNumber = 5;
+    [SerializeField] int missionWaveNumber = 3;
 
     private GameManager GameManager;
 
@@ -20,39 +21,56 @@ public class SpawnManager : MonoBehaviour
         //TODO should be singleton?
         GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-        SpawnEnemyWave(waveNumber);
         StartCoroutine(EnableReadyEvery10Seconds());
     }
 
-    void SpawnEnemyWave(int enemiesToSpawn)
+    void SpawnEnemyWave(int waveNumber)
     {
-        for (int i = 0; i < enemiesToSpawn; i++) {
+        for (int i = 0; i < waveNumber; i++) {
             int randomIndex = Random.Range(0, enemyPrefabs.Length);
-            Instantiate(enemyPrefabs[randomIndex], GenerateSpawnPosition(), enemyPrefabs[randomIndex].transform.rotation);
-        }
+            SpawnEnemy(enemyPrefabs[randomIndex], "air");
 
-        waveNumber++;
+            SpawnEnemy(vehicleEnemyPrefabs[randomIndex], "vehicle");
+        }
+    }
+
+    private void SpawnEnemy(GameObject GameObject, string EnemyType)
+    {
+        if (EnemyType == "air") {
+            Instantiate(GameObject, GenerateAirSpawnPosition(), GameObject.transform.rotation);
+        } else {
+            Instantiate(GameObject, GenerateLandSpawnPosition(), GameObject.transform.rotation);
+        }
     }
 
     private IEnumerator EnableReadyEvery10Seconds()
     {
         while (waveNumber <= missionWaveNumber) // Запускаем бесконечный цикл сопрограммы.
         {
-            // Ждем 10 секунд.
-            yield return new WaitForSeconds(15f);
-
-            SpawnEnemyWave(waveNumber);
             Debug.Log("new wave");
+            SpawnEnemyWave(waveNumber);
+            waveNumber++;
+
+            // Ждем 10 секунд.
+            yield return new WaitForSeconds(10f);
         }
 
         GameManager.LastWaveNotification();
     }
 
-    Vector3 GenerateSpawnPosition()
+    Vector3 GenerateAirSpawnPosition()
     {
-        float spawnPosX = -40.0f;
-        float spawnPosZ = Random.Range(-15, 15);
+        float spawnPosX = Random.Range(-100, -110);
+        float spawnPosZ = Random.Range(-20, 20);
         float spawnPosY = Random.Range(2, 16);
+        return new Vector3(spawnPosX, spawnPosY, spawnPosZ);
+    }
+
+    Vector3 GenerateLandSpawnPosition()
+    {
+        float spawnPosX = Random.Range(-100, -110);
+        float spawnPosZ = Random.Range(-20, 20);
+        float spawnPosY = 0.5f;
         return new Vector3(spawnPosX, spawnPosY, spawnPosZ);
     }
 }
