@@ -27,6 +27,15 @@ public class PlayerSciprt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
+
+        if (CanRotateGun(verticalInput)) {
+            gunPositionObject.transform.Rotate(Vector3.left * Time.deltaTime * turnSpeed * verticalInput);            
+        }
+        
+        transform.Rotate(Vector3.up,  Time.deltaTime * turnSpeed * horizontalInput);
+
         if (!GameManager.isGameActive) {
             return;
         }
@@ -42,15 +51,6 @@ public class PlayerSciprt : MonoBehaviour
                 pooledProjectile.GetComponent<Rigidbody>().velocity = gunPositionObject.transform.forward * power;
             }
         }
-
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
-
-        if (CanRotateGun(verticalInput)) {
-            gunPositionObject.transform.Rotate(Vector3.left * Time.deltaTime * turnSpeed * verticalInput);            
-        }
-        
-        transform.Rotate(Vector3.up,  Time.deltaTime * turnSpeed * horizontalInput);
     }
 
     // Should rotate between [6 - 0, 360 - 300]

@@ -151,6 +151,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 40
   dirtParticlePrefab: {fileID: 5373507123694235354, guid: 54292553daf37870dbbd725dbb007400, type: 3}
+  blackSmoreParticlePrefab: {fileID: 6935347997536893467, guid: 090bf0716b5ddc2029bcb6c6f4519419, type: 3}
+  airExplosionParticlePrefab: {fileID: 7829446278821199586, guid: d653c2cacd49679f181910dc3c016c6b, type: 3}
+  explosionParticlePrefab: {fileID: 6638561556441012034, guid: 9c0e8233a9d61a7d1ab048a0737c12a3, type: 3}
 --- !u!114 &-1974721600697440612
 MonoBehaviour:
   m_ObjectHideFlags: 0

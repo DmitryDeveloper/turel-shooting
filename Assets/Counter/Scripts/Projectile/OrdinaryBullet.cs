@@ -8,7 +8,10 @@ public class Projectile : BaseProjectile
 
     private Rigidbody projectibleRb;
     private GameManager gameManager;
-    public GameObject dirtParticlePrefab;
+    [SerializeField] GameObject dirtParticlePrefab;
+    [SerializeField] GameObject blackSmoreParticlePrefab;
+    [SerializeField] GameObject airExplosionParticlePrefab;
+    [SerializeField] GameObject explosionParticlePrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +23,26 @@ public class Projectile : BaseProjectile
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy")) {
+            //TODO move to ENEMY class
+            GameObject explosionParticle = Instantiate(explosionParticlePrefab, collision.contacts[0].point, Quaternion.identity);
+            ParticleSystem explosionParticleSystem = explosionParticle.GetComponent<ParticleSystem>();
+            explosionParticleSystem.Play();
+
+        
+            GameObject blackSmokeParticle = Instantiate(blackSmoreParticlePrefab, collision.contacts[0].point, Quaternion.identity);
+            ParticleSystem blackSmokeParticleSystem = blackSmokeParticle.GetComponent<ParticleSystem>();
+            blackSmokeParticleSystem.Play();
+
+            Destroy(collision.gameObject);
+            gameManager.UpdateCount(1);
+        }
+
+        if (collision.gameObject.CompareTag("AirEnemy")) {
+            //TODO move to ENEMY class
+            GameObject airExplosionParticle = Instantiate(airExplosionParticlePrefab, collision.contacts[0].point, Quaternion.identity);
+            ParticleSystem airExplosionParticleSystem = airExplosionParticle.GetComponent<ParticleSystem>();
+            airExplosionParticleSystem.Play();
+
             Destroy(collision.gameObject);
             gameManager.UpdateCount(1);
         }
