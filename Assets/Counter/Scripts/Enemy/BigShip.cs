@@ -16,7 +16,6 @@ public class BigShip : BaseEnemy
 
     private void Update()
     {
-        Debug.Log(Vector3.down);
         transform.Translate(Vector3.down * Time.deltaTime * speed);
     }
 }

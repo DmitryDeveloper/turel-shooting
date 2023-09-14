@@ -761,7 +761,7 @@ GameObject:
   - component: {fileID: 6032758460622279551}
   - component: {fileID: 1425075328981868571}
   - component: {fileID: -5446727832982167801}
-  - component: {fileID: -644957086108811203}
+  - component: {fileID: -9123048884270706214}
   m_Layer: 0
   m_Name: Pickup_v1
   m_TagString: Enemy
@@ -909,7 +909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directionPoint: {fileID: 0}
---- !u!114 &-644957086108811203
+--- !u!114 &-9123048884270706214
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -918,10 +918,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4773657104233242484}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dab3ed5d726e68d40b5a02dca359d168, type: 3}
+  m_Script: {fileID: 11500000, guid: c0844769428547dfc882d5324cb21507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directionPoint: {fileID: 0}
 --- !u!1 &4802082517066010867
 GameObject:
   m_ObjectHideFlags: 0

@@ -346,7 +346,7 @@ GameObject:
   - component: {fileID: 4294469309275891608}
   - component: {fileID: 2093856409775118438}
   - component: {fileID: -738673306618571286}
-  - component: {fileID: 1968455163791713224}
+  - component: {fileID: 8524962911615645617}
   m_Layer: 0
   m_Name: HCoupe_v1
   m_TagString: Enemy
@@ -487,7 +487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directionPoint: {fileID: 0}
---- !u!114 &1968455163791713224
+--- !u!114 &8524962911615645617
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -496,10 +496,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3614393253066560293}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dab3ed5d726e68d40b5a02dca359d168, type: 3}
+  m_Script: {fileID: 11500000, guid: c0844769428547dfc882d5324cb21507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directionPoint: {fileID: 0}
 --- !u!1 &5638683948525561057
 GameObject:
   m_ObjectHideFlags: 0
