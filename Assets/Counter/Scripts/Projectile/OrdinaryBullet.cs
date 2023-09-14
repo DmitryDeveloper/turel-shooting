@@ -8,8 +8,7 @@ public class Projectile : BaseProjectile
 
     private Rigidbody projectibleRb;
     private GameManager gameManager;
-
-    public ParticleSystem dirtParticle;
+    public GameObject dirtParticlePrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -26,13 +25,11 @@ public class Projectile : BaseProjectile
         }
 
         if (collision.gameObject.CompareTag("Ground")) {
-            Debug.Log(dirtParticle);
-            Debug.Log(collision.contacts[0].point);
-            dirtParticle.transform.position = collision.contacts[0].point; // Устанавливаем позицию эффекта
-            //TODO replace with new object to play effect?
-            dirtParticle.Play(); // Запускаем эффект
-            Invoke("DeactivateGameObject", 0.5f);
-            return;
+            GameObject newDirtParticle = Instantiate(dirtParticlePrefab, collision.contacts[0].point, Quaternion.Euler(-100, 90, 0));
+            ParticleSystem newDirtParticleSystem = newDirtParticle.GetComponent<ParticleSystem>();
+            newDirtParticleSystem.Play();
+
+            Destroy(newDirtParticle, newDirtParticleSystem.main.duration);
         }
 
         gameObject.SetActive(false);
