@@ -9,6 +9,7 @@ public class PlayerSciprt : MonoBehaviour
     [SerializeField] GameObject firePositionObject;
     [SerializeField] float power = 60.0f;
     [SerializeField] float turnSpeed = 50.0f;
+    [SerializeField] ParticleSystem fireParticle;
 
     private float horizontalInput;
     private float verticalInput;
@@ -42,16 +43,31 @@ public class PlayerSciprt : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            // Get an object object from the pool
-            GameObject pooledProjectile = ProjectilePooler.SharedInstance.GetPooledObject();
-            if (pooledProjectile != null)
-            {
-                pooledProjectile.SetActive(true); // activate it
-                pooledProjectile.transform.position = firePositionObject.transform.position; // position it at player
-                pooledProjectile.GetComponent<Rigidbody>().velocity = gunPositionObject.transform.forward * power;
-            }
+            fire();
         }
     }
+
+    private void fire()
+    {
+        // Get an object object from the pool
+        GameObject pooledProjectile = ProjectilePooler.SharedInstance.GetPooledObject();
+
+        if (pooledProjectile != null)
+        {
+            pooledProjectile.SetActive(true); // activate it
+            pooledProjectile.transform.position = firePositionObject.transform.position; // position it at player
+            pooledProjectile.GetComponent<Rigidbody>().velocity = gunPositionObject.transform.forward * power;
+
+            StartCoroutine("PlayShotParticle");
+        }
+    }
+
+    IEnumerator PlayShotParticle()
+	{
+        fireParticle.Play();
+		yield return new WaitForSeconds(0.1f);
+		fireParticle.Stop();
+	}
 
     // Should rotate between [6 - 0, 360 - 300]
     // TODO can be replaces with Transform Y of Fire object ?
