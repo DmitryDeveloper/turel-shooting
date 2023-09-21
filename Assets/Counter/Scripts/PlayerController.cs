@@ -54,6 +54,8 @@ public class PlayerSciprt : MonoBehaviour
 
         if (pooledProjectile != null)
         {
+            StartCoroutine("MoveGunAnimationEffect");
+
             pooledProjectile.SetActive(true); // activate it
             pooledProjectile.transform.position = firePositionObject.transform.position; // position it at player
             pooledProjectile.GetComponent<Rigidbody>().velocity = gunPositionObject.transform.forward * power;
@@ -61,6 +63,13 @@ public class PlayerSciprt : MonoBehaviour
             StartCoroutine("PlayShotParticle");
         }
     }
+
+    IEnumerator MoveGunAnimationEffect()
+	{
+        gunPositionObject.transform.Translate(new Vector3(0, 0, -0.1f));
+		yield return new WaitForSeconds(0.1f);
+        gunPositionObject.transform.Translate(new Vector3(0, 0, 0.1f));
+	}
 
     IEnumerator PlayShotParticle()
 	{
