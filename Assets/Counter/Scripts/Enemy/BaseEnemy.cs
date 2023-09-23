@@ -11,12 +11,22 @@ public class BaseEnemy : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] AudioClip explosionAudioClip;
 
+    // private float explosionVolume;
+
     protected bool isDestroyed = false;
 
     protected void Start()
     {
         audioSource = GetComponent<AudioSource>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
+
+    protected float GetExplosionVolume()
+    {
+        float distance = Vector3.Distance(transform.position, Camera.main.transform.position);
+        float maxDistance = 80f;
+        float volume = Mathf.Clamp(1f - (distance / maxDistance), 0f, 1f);
+        return volume;
     }
 
     public void destroy()
@@ -27,7 +37,8 @@ public class BaseEnemy : MonoBehaviour
 
         StartCoroutine(DestroyWithDelay());
         isDestroyed = true;
-        audioSource.PlayOneShot(explosionAudioClip, 1.0f);
+
+        audioSource.PlayOneShot(explosionAudioClip, GetExplosionVolume());
 
         if (gameObject.CompareTag("Enemy")) {
             destroyAuto();
@@ -42,7 +53,7 @@ public class BaseEnemy : MonoBehaviour
 
     IEnumerator DestroyWithDelay()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1.1f);
         Destroy(gameObject);
     }
 

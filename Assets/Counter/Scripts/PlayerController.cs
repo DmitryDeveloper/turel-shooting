@@ -63,7 +63,7 @@ public class PlayerSciprt : MonoBehaviour
             pooledProjectile.transform.position = firePositionObject.transform.position; // position it at player
             pooledProjectile.GetComponent<Rigidbody>().velocity = gunPositionObject.transform.forward * power;
 
-            audioSource.PlayOneShot(shootAudioClip, 0.3f);
+            audioSource.PlayOneShot(shootAudioClip, 0.2f);
 
             StartCoroutine("PlayShotParticle");
         }
