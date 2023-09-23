@@ -31,6 +31,8 @@ public class Auto : BaseEnemy
     {   
         if (!isDestroyed) {
             transform.Translate(Vector3.forward * Time.deltaTime * speed);
+
+            base.Update();
         }
     }
 

@@ -21,10 +21,23 @@ public class BaseEnemy : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
+    protected void Update()
+    {
+        audioSource.volume = GetEnemyVolume();
+    }
+
     protected float GetExplosionVolume()
     {
         float distance = Vector3.Distance(transform.position, Camera.main.transform.position);
         float maxDistance = 80f;
+        float volume = Mathf.Clamp(1f - (distance / maxDistance), 0f, 1f);
+        return volume;
+    }
+
+    protected float GetEnemyVolume()
+    {
+        float distance = Vector3.Distance(transform.position, Camera.main.transform.position);
+        float maxDistance = 20f;
         float volume = Mathf.Clamp(1f - (distance / maxDistance), 0f, 1f);
         return volume;
     }
