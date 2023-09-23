@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 5705891559557656734}
   m_Layer: 0
   m_Name: Tire_v2_L
-  m_TagString: Untagged
+  m_TagString: Wheel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 5286787912031165139}
   m_Layer: 0
   m_Name: Tire_v2_R
-  m_TagString: Untagged
+  m_TagString: Wheel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 3823599534227161101}
   m_Layer: 0
   m_Name: Tire_v2_R
-  m_TagString: Untagged
+  m_TagString: Wheel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -611,8 +611,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.2397852, y: 2.9748473, z: 5.817032}
-  m_Center: {x: -0.00000011920929, y: -0.000000059604645, z: -0.00000011920929}
+  m_Size: {x: 3.2397852, y: 3.2250335, z: 5.817032}
+  m_Center: {x: -0.00000009934107, y: -0.12509286, z: -0.00000019868213}
 --- !u!54 &7131154956615079126
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -679,7 +679,7 @@ GameObject:
   - component: {fileID: 8650235736823442773}
   m_Layer: 0
   m_Name: Tire_v2_L
-  m_TagString: Untagged
+  m_TagString: Wheel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

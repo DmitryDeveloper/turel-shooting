@@ -12,10 +12,29 @@ public class Auto : BaseEnemy
     void Start()
     {
         enemyRb = GetComponent<Rigidbody>();
+
+
+        Transform[] wheels = transform.GetComponentsInChildren<Transform>();
+
+        foreach (Transform wheel in wheels)
+        {
+            if (wheel.CompareTag("Wheel"))
+            {
+                StartCoroutine(SpinWheel(wheel));
+            }
+        }
     }
 
     private void Update()
     {
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
+
+    IEnumerator SpinWheel(Transform wheel)
+	{
+        while (true) {
+            wheel.Rotate(Vector3.right * Time.deltaTime * 100f); // Изменяем вращение колеса
+            yield return null;
+        }
+	}
 }
