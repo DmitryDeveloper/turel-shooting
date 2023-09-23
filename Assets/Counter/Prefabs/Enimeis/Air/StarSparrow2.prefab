@@ -405,6 +405,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eb787dc696e724e6a3d447349a8ad72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  airExplosionParticlePrefab: {fileID: 7829446278821199586, guid: d653c2cacd49679f181910dc3c016c6b, type: 3}
+  blackSmoreParticlePrefab: {fileID: 0}
+  explosionParticlePrefab: {fileID: 0}
   directionPoint: {fileID: 0}
   speed: 3
 --- !u!1 &3517744060660022711

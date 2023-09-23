@@ -9,9 +9,10 @@ public class BigShip : BaseEnemy
     [SerializeField] float speed = 3.0f;
     
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         enemyRb = GetComponent<Rigidbody>();
+        base.Start();
     }
 
     private void Update()

@@ -582,6 +582,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directionPoint: {fileID: 0}
+  blackSmoreParticlePrefab: {fileID: 6935347997536893467, guid: 090bf0716b5ddc2029bcb6c6f4519419, type: 3}
+  explosionParticlePrefab: {fileID: 6638561556441012034, guid: 9c0e8233a9d61a7d1ab048a0737c12a3, type: 3}
 --- !u!1 &6458818023106225842
 GameObject:
   m_ObjectHideFlags: 0

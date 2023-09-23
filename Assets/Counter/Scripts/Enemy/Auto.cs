@@ -9,7 +9,7 @@ public class Auto : BaseEnemy
     private float speed = 2.5f;
     
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         enemyRb = GetComponent<Rigidbody>();
 
@@ -23,6 +23,8 @@ public class Auto : BaseEnemy
                 StartCoroutine(SpinWheel(wheel));
             }
         }
+
+        base.Start();
     }
 
     private void Update()
