@@ -10,6 +10,8 @@ public class PlayerSciprt : MonoBehaviour
     [SerializeField] float power = 60.0f;
     [SerializeField] float turnSpeed = 50.0f;
     [SerializeField] ParticleSystem fireParticle;
+    private AudioSource audioSource;
+    [SerializeField] AudioClip shootAudioClip;
 
     private float horizontalInput;
     private float verticalInput;
@@ -23,6 +25,7 @@ public class PlayerSciprt : MonoBehaviour
     {
         //TODO should be singleton?
         GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -59,6 +62,8 @@ public class PlayerSciprt : MonoBehaviour
             pooledProjectile.SetActive(true); // activate it
             pooledProjectile.transform.position = firePositionObject.transform.position; // position it at player
             pooledProjectile.GetComponent<Rigidbody>().velocity = gunPositionObject.transform.forward * power;
+
+            audioSource.PlayOneShot(shootAudioClip, 1.0f);
 
             StartCoroutine("PlayShotParticle");
         }
