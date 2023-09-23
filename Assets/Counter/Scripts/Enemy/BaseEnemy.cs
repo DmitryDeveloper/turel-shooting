@@ -8,14 +8,27 @@ public class BaseEnemy : MonoBehaviour
     [SerializeField] GameObject airExplosionParticlePrefab;
     [SerializeField] GameObject blackSmoreParticlePrefab;
     [SerializeField] GameObject explosionParticlePrefab;
+    private AudioSource audioSource;
+    [SerializeField] AudioClip explosionAudioClip;
+
+    protected bool isDestroyed = false;
 
     protected void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     public void destroy()
     {
+        if (isDestroyed) {
+            return;
+        }
+
+        StartCoroutine(DestroyWithDelay());
+        isDestroyed = true;
+        audioSource.PlayOneShot(explosionAudioClip, 1.0f);
+
         if (gameObject.CompareTag("Enemy")) {
             destroyAuto();
         } 
@@ -24,12 +37,18 @@ public class BaseEnemy : MonoBehaviour
             destroyAir();
         }
 
-        Destroy(gameObject);
         gameManager.UpdateCount(1);   
+    }
+
+    IEnumerator DestroyWithDelay()
+    {
+        yield return new WaitForSeconds(1.0f);
+        Destroy(gameObject);
     }
 
     public void destroyAuto()
     {
+
         GameObject explosionParticle = Instantiate(explosionParticlePrefab, gameObject.transform.position, Quaternion.identity);
         ParticleSystem explosionParticleSystem = explosionParticle.GetComponent<ParticleSystem>();
         explosionParticleSystem.Play();

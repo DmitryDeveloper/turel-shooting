@@ -28,8 +28,10 @@ public class Auto : BaseEnemy
     }
 
     private void Update()
-    {
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+    {   
+        if (!isDestroyed) {
+            transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        }
     }
 
     IEnumerator SpinWheel(Transform wheel)
