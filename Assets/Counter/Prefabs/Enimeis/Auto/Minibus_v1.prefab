@@ -657,6 +657,7 @@ MonoBehaviour:
   blackSmoreParticlePrefab: {fileID: 6935347997536893467, guid: 090bf0716b5ddc2029bcb6c6f4519419, type: 3}
   explosionParticlePrefab: {fileID: 6638561556441012034, guid: 9c0e8233a9d61a7d1ab048a0737c12a3, type: 3}
   explosionAudioClip: {fileID: 8300000, guid: 417e4320dc38f4e068234de664973f32, type: 3}
+  ScoreValue: 5
   directionPoint: {fileID: 0}
 --- !u!114 &-5418618673390996183
 MonoBehaviour:
@@ -674,6 +675,7 @@ MonoBehaviour:
   blackSmoreParticlePrefab: {fileID: 0}
   explosionParticlePrefab: {fileID: 0}
   explosionAudioClip: {fileID: 0}
+  ScoreValue: 0
   directionPoint: {fileID: 0}
 --- !u!82 &5756069086341274708
 AudioSource:

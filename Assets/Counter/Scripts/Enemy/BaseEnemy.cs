@@ -10,6 +10,7 @@ public class BaseEnemy : MonoBehaviour
     [SerializeField] GameObject explosionParticlePrefab;
     private AudioSource audioSource;
     [SerializeField] AudioClip explosionAudioClip;
+    [SerializeField] int ScoreValue = 5;
 
     protected bool isDestroyed = false;
 
@@ -68,7 +69,8 @@ public class BaseEnemy : MonoBehaviour
             destroyAir();
         }
 
-        gameManager.UpdateCount(1);   
+        gameManager.UpdateCount(1); 
+        gameManager.UpdateScore(ScoreValue);     
     }
 
     IEnumerator DestroyWithDelay()

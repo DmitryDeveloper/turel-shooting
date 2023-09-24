@@ -410,6 +410,7 @@ MonoBehaviour:
   blackSmoreParticlePrefab: {fileID: 0}
   explosionParticlePrefab: {fileID: 0}
   explosionAudioClip: {fileID: 8300000, guid: 417e4320dc38f4e068234de664973f32, type: 3}
+  ScoreValue: 10
   directionPoint: {fileID: 0}
   speed: 3
 --- !u!82 &-8488154706008294224

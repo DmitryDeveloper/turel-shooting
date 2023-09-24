@@ -9,12 +9,14 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] Text CounterText;
+    [SerializeField] Text ScoreText;
     [SerializeField] Text CounterNotDestroyedEnemiesText;
     [SerializeField] GameObject GameOverUIContainer; 
     [SerializeField] GameObject MissionCompletedUIContainer; 
 
     public bool isGameActive { get; private set; }
     private int Count = 0;
+    private int Score = 0;
     private int CountNotDestroyedEnimies = 0;
 
     private void Start()
@@ -30,6 +32,13 @@ public class GameManager : MonoBehaviour
     {
         Count += value;
         CounterText.text = "Count : " + Count;
+        ScoreText.text = "Score : " + Count;
+    }
+
+    public void UpdateScore(int value)
+    {
+        Score += value;
+        ScoreText.text = "Score : " + Score;
     }
 
     public void UpdateCountNotDestroyedEnemies(int value)
