@@ -34,9 +34,15 @@ public class BaseEnemy : MonoBehaviour
 
     protected float GetEnemyVolume()
     {
-        float distance = Vector3.Distance(transform.position, Camera.main.transform.position);
         float maxDistance = 20f;
+
+        if (gameObject.CompareTag("AirEnemy")) {
+            maxDistance = 40f;
+        }
+
+        float distance = Vector3.Distance(transform.position, Camera.main.transform.position);
         float volume = Mathf.Clamp(0.8f - (distance / maxDistance), 0f, 0.8f);
+
         return volume;
     }
 
@@ -88,6 +94,10 @@ public class BaseEnemy : MonoBehaviour
         GameObject airExplosionParticle = Instantiate(airExplosionParticlePrefab, gameObject.transform.position, Quaternion.identity);
         ParticleSystem airExplosionParticleSystem = airExplosionParticle.GetComponent<ParticleSystem>();
         airExplosionParticleSystem.Play();
+
+        // do I need that?
+        // Rigidbody playerRb = GetComponent<Rigidbody>();
+        // playerRb.useGravity = true;
     }
 
     private void initEnemyAudio()

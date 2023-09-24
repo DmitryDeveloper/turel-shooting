@@ -17,6 +17,10 @@ public class PlaneScript : BaseEnemy
 
     private void Update()
     {
+        if (!isDestroyed) {
+            base.Update();
+        }
+        
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
 }

@@ -17,6 +17,10 @@ public class BigShip : BaseEnemy
 
     private void Update()
     {
+        if (!isDestroyed) {
+            base.Update();
+        }
+        
         transform.Translate(Vector3.down * Time.deltaTime * speed);
     }
 }
