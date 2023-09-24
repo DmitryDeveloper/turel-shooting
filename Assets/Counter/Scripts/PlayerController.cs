@@ -119,6 +119,7 @@ public class PlayerSciprt : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy")) {
             GameManager.GameOver();
+            collision.gameObject.GetComponent<BaseEnemy>().DoDestroy();
             Destroy(collision.gameObject);
         }
     }

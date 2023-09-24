@@ -11,13 +11,11 @@ public class BaseEnemy : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] AudioClip explosionAudioClip;
 
-    // private float explosionVolume;
-
     protected bool isDestroyed = false;
 
     protected void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        initEnemyAudio();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
@@ -38,20 +36,23 @@ public class BaseEnemy : MonoBehaviour
     {
         float distance = Vector3.Distance(transform.position, Camera.main.transform.position);
         float maxDistance = 20f;
-        float volume = Mathf.Clamp(1f - (distance / maxDistance), 0f, 1f);
+        float volume = Mathf.Clamp(0.8f - (distance / maxDistance), 0f, 0.8f);
         return volume;
     }
 
-    public void destroy()
+    public void DoDestroy()
     {
         if (isDestroyed) {
             return;
         }
 
-        StartCoroutine(DestroyWithDelay());
         isDestroyed = true;
+        audioSource.Stop();
 
-        audioSource.PlayOneShot(explosionAudioClip, GetExplosionVolume());
+        StartCoroutine(DestroyWithDelay());
+
+        audioSource.volume = GetExplosionVolume();
+        audioSource.PlayOneShot(explosionAudioClip);
 
         if (gameObject.CompareTag("Enemy")) {
             destroyAuto();
@@ -87,5 +88,12 @@ public class BaseEnemy : MonoBehaviour
         GameObject airExplosionParticle = Instantiate(airExplosionParticlePrefab, gameObject.transform.position, Quaternion.identity);
         ParticleSystem airExplosionParticleSystem = airExplosionParticle.GetComponent<ParticleSystem>();
         airExplosionParticleSystem.Play();
+    }
+
+    private void initEnemyAudio()
+    {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = GetEnemyVolume();
+        audioSource.Play();
     }
 }

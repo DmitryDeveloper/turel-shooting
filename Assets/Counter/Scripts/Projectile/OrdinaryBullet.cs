@@ -23,7 +23,7 @@ public class Projectile : BaseProjectile
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("AirEnemy")) {
-            collision.gameObject.GetComponent<BaseEnemy>().destroy();
+            collision.gameObject.GetComponent<BaseEnemy>().DoDestroy();
         }
 
         if (collision.gameObject.CompareTag("Ground")) {
