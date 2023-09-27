@@ -28,8 +28,8 @@ public class SpawnManager : MonoBehaviour
     {
         for (int i = 0; i < waveNumber; i++) {
             int randomIndex = Random.Range(0, enemyPrefabs.Length);
-            SpawnEnemy(enemyPrefabs[randomIndex], "air");
 
+            SpawnEnemy(enemyPrefabs[randomIndex], "air");
             SpawnEnemy(vehicleEnemyPrefabs[randomIndex], "vehicle");
         }
     }
@@ -45,13 +45,27 @@ public class SpawnManager : MonoBehaviour
 
     private IEnumerator EnableReadyEvery10Seconds()
     {
-        while (waveNumber <= missionWaveNumber) // Запускаем бесконечный цикл сопрограммы.
+        yield return new WaitForSeconds(100f);
+
+        while (waveNumber <= missionWaveNumber)
         {
             Debug.Log("new wave");
             SpawnEnemyWave(waveNumber);
             waveNumber++;
 
-            // Ждем 10 секунд.
+            yield return new WaitForSeconds(15f);
+        }
+
+        yield return new WaitForSeconds(20f);
+
+        waveNumber = 0;
+
+        while (waveNumber <= missionWaveNumber)
+        {
+            Debug.Log("new wave");
+            SpawnEnemyWave(waveNumber);
+            waveNumber++;
+
             yield return new WaitForSeconds(10f);
         }
 
@@ -60,7 +74,7 @@ public class SpawnManager : MonoBehaviour
 
     Vector3 GenerateAirSpawnPosition()
     {
-        float spawnPosX = Random.Range(-100, -110);
+        float spawnPosX = Random.Range(-120, -140);
         float spawnPosZ = Random.Range(-20, 20);
         float spawnPosY = Random.Range(2, 16);
         return new Vector3(spawnPosX, spawnPosY, spawnPosZ);
@@ -68,8 +82,8 @@ public class SpawnManager : MonoBehaviour
 
     Vector3 GenerateLandSpawnPosition()
     {
-        float spawnPosX = Random.Range(-100, -110);
-        float spawnPosZ = Random.Range(-20, 20);
+        float spawnPosX = Random.Range(-100, -120);
+        float spawnPosZ = Random.Range(-25, 25);
         float spawnPosY = 0.5f;
         return new Vector3(spawnPosX, spawnPosY, spawnPosZ);
     }

@@ -41,6 +41,10 @@ public class BaseEnemy : MonoBehaviour
             maxDistance = 40f;
         }
 
+        if (gameObject.CompareTag("Robot")) {
+            maxDistance = 10f;
+        }
+
         float distance = Vector3.Distance(transform.position, Camera.main.transform.position);
         float volume = Mathf.Clamp(0.8f - (distance / maxDistance), 0f, 0.8f);
 
@@ -69,14 +73,34 @@ public class BaseEnemy : MonoBehaviour
             destroyAir();
         }
 
+        if (gameObject.CompareTag("Robot")) { 
+            destroyRobot();
+        }
+
         gameManager.UpdateCount(1); 
         gameManager.UpdateScore(ScoreValue);     
     }
 
     IEnumerator DestroyWithDelay()
     {
-        yield return new WaitForSeconds(1.1f);
+        float waitTime = 1.1f;
+
+         if (gameObject.CompareTag("Robot")) { 
+            waitTime = 0.3f;
+        }
+
+        yield return new WaitForSeconds(waitTime);
         Destroy(gameObject);
+    }
+
+    public void destroyRobot()
+    {
+        Vector3 explosionPosition = gameObject.transform.position;
+        explosionPosition.y = 0.3f;
+
+        GameObject explosionParticle = Instantiate(explosionParticlePrefab, explosionPosition, Quaternion.identity);
+        ParticleSystem explosionParticleSystem = explosionParticle.GetComponent<ParticleSystem>();
+        explosionParticleSystem.Play();
     }
 
     public void destroyAuto()

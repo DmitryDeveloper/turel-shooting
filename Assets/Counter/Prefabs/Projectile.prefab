@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e14bd1f5ba46c9cf5ad15c678ea87477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
+  speed: 50
   dirtParticlePrefab: {fileID: 5373507123694235354, guid: 54292553daf37870dbbd725dbb007400, type: 3}
   blackSmoreParticlePrefab: {fileID: 6935347997536893467, guid: 090bf0716b5ddc2029bcb6c6f4519419, type: 3}
   airExplosionParticlePrefab: {fileID: 7829446278821199586, guid: d653c2cacd49679f181910dc3c016c6b, type: 3}
