@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    [SerializeField] GameObject robotPrefab;
     [SerializeField] GameObject[] enemyPrefabs;
     [SerializeField] GameObject[] vehicleEnemyPrefabs;
 
